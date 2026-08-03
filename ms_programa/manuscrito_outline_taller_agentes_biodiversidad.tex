@@ -1,0 +1,1160 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[provide=*,spanish]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[round,authoryear]{natbib}
+\usepackage{hyperref}
+
+\definecolor{azulieb}{HTML}{174A6E}
+\definecolor{grisclaro}{HTML}{F1F4F6}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=azulieb,
+  urlcolor=azulieb,
+  pdftitle={Marco Curricular para la Formación en Informática de la Biodiversidad en la Era de los Agentes de IA},
+  pdfsubject={Outline de manuscrito para el taller internacional, septiembre de 2026}
+}
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.25em,topsep=0.4em}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=0.25em,topsep=0.4em}
+\renewcommand{\arraystretch}{1.2}
+
+\newcommand{\pendiente}[1]{\textcolor{azulieb}{\textbf{[Por acordar:} #1\textbf{]}}}
+\newenvironment{preguntas}
+  {\par\medskip\begin{quote}\color{azulieb}\hrule\smallskip
+   \textbf{Preguntas para el consenso}\par\smallskip\begin{itemize}}
+  {\end{itemize}\smallskip\hrule\end{quote}\par\medskip}
+
+\title{\textbf{Marco Curricular para la Formación en Informática de la
+Biodiversidad en la Era de los Agentes de Inteligencia Artificial}\\[0.6em]
+\large Outline de manuscrito para escritura colaborativa}
+\author{Taller Internacional\\
+Instituto de Ecología y Biodiversidad (Chile)\\
+Instituto de Investigación de Recursos Biológicos Alexander von Humboldt (Colombia)\\[0.5em]
+\pendiente{autorías y afiliaciones}}
+\date{Concepción, Chile --- 14 al 17 de septiembre de 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+La irrupción de agentes de inteligencia artificial capaces de generar código, consultar literatura, 
+integrar herramientas y coordinar flujos de análisis está transformando la informática de la biodiversidad y 
+cuestionando los modelos formativos centrados en lenguajes de programación y tutoriales específicos. Paralelamente, 
+la implementación del Marco Global de Biodiversidad Kunming–Montreal exige capacidades sostenidas para integrar 
+observaciones heterogéneas, producir indicadores y convertirlos en evidencia trazable para la toma de decisiones. 
+Este artículo propone un marco curricular latinoamericano destinado a preparar estudiantes, investigadores, profesionales 
+y equipos institucionales para colaborar responsablemente con agentes de IA en investigación, monitoreo y gestión de la 
+biodiversidad. A partir de una síntesis conceptual de la literatura, el marco distingue diferentes grados de autonomía y 
+vincula su uso con competencias en formulación de problemas, fundamentos computacionales, datos de biodiversidad, 
+reutilización de repositorios, control de versiones, supervisión de agentes, reproducibilidad, validación, ética, gobernanza 
+y colaboración interdisciplinaria. El modelo pedagógico combina problemas auténticos, práctica manual, asistencia de agentes, 
+auditoría colectiva y evaluación de procesos, decisiones e incertidumbres, además de los productos finales. Se propone una 
+arquitectura modular y adaptable, acompañada por un repositorio abierto y una comunidad regional de práctica que sostengan 
+su actualización, reutilización y gobernanza. La tesis central es que la automatización no elimina la necesidad de fundamentos 
+técnicos y ecológicos, sino que desplaza el énfasis desde la producción manual de código hacia la capacidad de comprender, 
+reutilizar, auditar y gobernar ecosistemas abiertos de conocimiento, preservando la responsabilidad humana, la capacidad local y 
+la cooperación científica.
+
+
+\medskip
+\noindent\textbf{Palabras clave:} informática de la biodiversidad; agentes de
+inteligencia artificial; formación permanente; ciencia abierta; reproducibilidad;
+auditoría; control de versiones; infraestructura digital.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section*{Propósito y modo de uso del outline}
+\addcontentsline{toc}{section}{Propósito y modo de uso del outline}
+
+Este documento es la estructura de trabajo del producto principal del taller:
+un marco curricular que pueda orientar cursos, programas de capacitación,
+escuelas de verano y actividades de fortalecimiento de capacidades en América
+Latina. Cada sección corresponde a un bloque del programa y debe cerrarse con
+acuerdos, disensos relevantes, evidencia o ejemplos y recomendaciones
+accionables.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}p{2.2cm}p{2.7cm}X p{3.0cm}@{}}
+\toprule
+\textbf{Bloque} & \textbf{Eje} & \textbf{Pregunta central} &
+\textbf{Producto escrito}\\
+\midrule
+Lunes AM & Contexto &
+¿Qué capacidades informáticas requiere la implementación del marco de monitoreo
+del KMGBF y por qué la IA obliga a replantear la formación? & Introducción\\
+Lunes PM & Transformación &
+¿Cómo cambian los agentes la investigación, el desarrollo, la innovación, el
+monitoreo y la gestión de la biodiversidad? & Sección 1\\
+Martes AM & Competencias &
+¿Qué conocimientos, habilidades y disposiciones debemos enseñar? & Sección 2\\
+Martes PM & Pedagogía &
+¿Cómo deberían enseñarse y evaluarse estas competencias? & Sección 3\\
+Miércoles AM & Currículo &
+¿Cómo estructurar un programa moderno, progresivo y adaptable? & Sección 4\\
+Miércoles PM & Implementación &
+¿Qué infraestructura, gobernanza y comunidad se requieren? & Sección 5\\
+Jueves AM & Integración &
+¿Qué mensajes, recomendaciones y compromisos emergen? & Conclusiones y hoja de ruta\\
+\bottomrule
+\end{tabularx}
+\caption{Correspondencia entre los bloques del taller y el manuscrito.}
+\end{table}
+
+\clearpage
+\section*{Charlas de provocación}
+\addcontentsline{toc}{section}{Charlas de provocación}
+
+Las charlas de provocación aportan un lenguaje común y preguntas iniciales para
+la discusión y la escritura colaborativa. Sus ideas deberán registrarse como
+insumos del taller y contrastarse con la literatura y la experiencia de las
+personas participantes antes de incorporarlas como acuerdos del manuscrito. Las
+intervenciones sin horario asignado se mantienen como ``por programar'' hasta
+actualizar el programa cronológico.
+
+\begin{center}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}
+  >{\raggedright\arraybackslash}p{2.2cm}
+  >{\raggedright\arraybackslash}p{3.4cm}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}p{3.5cm}@{}}
+\toprule
+\textbf{Día y horario} & \textbf{Expositor(es)} &
+\textbf{Provocación o eje} & \textbf{Secciones que alimenta}\\
+\midrule
+Lunes 14, 09:00--10:30 &
+Diana Pulido, Instituto Humboldt (remoto) &
+Contexto de biodiversidad y fortalecimiento de capacidades. &
+Introducción; contexto del KMGBF; capacidades para investigación, monitoreo y
+gestión.\\
+Lunes 14, 10:50--12:00 &
+Carlos Gortaris (remoto); Diego Arenas, DFKI (remoto) &
+Agentes de IA: oportunidades, riesgos y transformaciones para la biodiversidad. &
+Transformación de la I+D+i; riesgos y límites; colaboración humano--agente.\\
+Por programar &
+Leonardo Buitrago, Consultor Informática de la Biodiversidad &
+Datos de biodiversidad: fuentes, calidad, integración, estándares y
+procedencia. &
+Marco de competencias; datos de biodiversidad; infraestructura y
+reproducibilidad.\\
+Por programar &
+José Díaz, Boquila &
+¿Qué se debe saber para trabajar en biodiversidad usando agentes de IA? &
+Marco de competencias; resultados de aprendizaje; progresión curricular.\\
+Por programar &
+Luisa Diele-Viegas, ABECO &
+Dimensiones sociales de la ciencia que podrían verse afectadas por la irrupción
+de los agentes de inteligencia artificial. &
+Reorganización del trabajo científico; riesgos; colaboración, ética y
+gobernanza.\\
+Martes 15, 14:00--15:30 &
+Mario Miqueles, Creatividad y Autoformación &
+Creatividad y autoformación: autoaprendizaje y modelos pedagógicos. &
+Modelo pedagógico; actividades de aprendizaje; evaluación y aprendizaje
+permanente.\\
+Por programar &
+Valeria Bermedo, Formación Permanente UdeC &
+Elementos de diseño curricular para programas de formación permanente. &
+Modelo pedagógico; arquitectura curricular; trayectorias, formatos y
+evaluación.\\
+\bottomrule
+\end{tabularx}
+\par\medskip
+\textit{Charlas de provocación, expositores y contribución prevista al outline.}
+\end{center}
+
+\section{Introducción: por qué es necesario un nuevo marco curricular}
+
+\subsection{Contexto de biodiversidad y fortalecimiento de capacidades}
+
+\begin{itemize}
+  \item Situar la propuesta ante la pérdida acelerada de biodiversidad y el
+  incumplimiento global de las metas de Aichi para 2020, antecedentes que
+  impulsaron la adopción del Marco Global de Biodiversidad Kunming--Montreal
+  (KMGBF) del Convenio sobre la Diversidad Biológica. Sus cuatro objetivos para
+  2050 y 23 metas de acción para 2030 vinculan la ambición global con estrategias,
+  monitoreo y reportes nacionales; su implementación exige capacidades sostenidas
+  para investigación, observación, gestión de datos, evaluación y toma de
+  decisiones \citep{affinito2024monitoring,affinito2025coverage}.
+  \item Describir brevemente las brechas regionales de formación, infraestructura
+  y continuidad institucional que motivan una propuesta latinoamericana de
+  formación permanente. Un análisis de 74,6 millones de publicaciones y 4,2
+  millones de programas de curso encontró que, fuera de las disciplinas
+  computacionales, la oferta formativa en IA no se corresponde bien con su uso y
+  beneficio potencial en investigación. Aunque sus datos terminan en 2019 y sus
+  medidas son aproximaciones bibliométricas, el estudio ofrece evidencia de una
+  brecha entre adopción y formación que este currículo busca atender
+  \citep{gao2024quantifying}.
+ \item Caracterizar la investigación en biodiversidad como un dominio espacial, 
+ temporal y multiescalar que integra ocurrencias y abundancias de especies, monitoreo 
+ imperfecto, teledetección, presiones antropogénicas, clima, costos y conocimiento ecológico. 
+ Dentro de este marco deben distinguirse dos ámbitos conectados: la investigación, que formula 
+ y contrasta preguntas para producir conocimiento, y el monitoreo, una actividad aplicada, 
+ sostenida y orientada a decisiones, que establece líneas base y repite observaciones comparables 
+ para estimar el estado de la biodiversidad, sus cambios y la efectividad de las acciones. El monitoreo 
+ requiere definir por qué, qué y cómo observar, además de sostener capacidades taxonómicas, series
+ temporales, infraestructura y vínculos entre quienes producen y utilizan los datos \citep{paton2009biodiversity,buckland2005monitoring}. 
+ Dos aplicaciones recientes de aprendizaje por refuerzo muestran el potencial de integrar estas dimensiones.
+  \item Precisar los públicos del marco: estudiantes, investigadores,
+  profesionales, gestores, desarrolladores, docentes y equipos institucionales.
+\end{itemize}
+
+\subsection{El cambio tecnológico}
+
+\begin{itemize}
+  \item Contrastar el modelo tradicional, centrado en tutoriales, lenguajes y
+  análisis específicos, con un escenario en el que agentes generan código,
+  construyen flujos de trabajo, interpretan literatura y asisten múltiples etapas
+  de la investigación. La literatura describe este cambio como una transición
+  desde herramientas expertas para tareas discretas hacia asistentes con autonomía
+  parcial y, todavía de manera emergente, socios capaces de intervenir en ciclos
+  completos de descubrimiento \citep{wei2025agentic}.
+  \item Explicar el desplazamiento de valor desde la escritura manual de código
+  hacia la formulación de problemas, comprensión de sistemas, reutilización,
+  validación, mantenimiento y colaboración. El objetivo no debería ser la
+  automatización completa de la ciencia, sino una colaboración
+  \emph{con el piloto al mando}: equipos de agentes especializados pueden
+  acelerar y coordinar tareas, mientras las personas conservan la autoridad y la
+  responsabilidad de formular las preguntas, validar el proceso y aprobar las
+  conclusiones. Este modelo exige formar científicos capaces de dirigir,
+  cuestionar y auditar a los agentes, y de sostener la trazabilidad, la
+  reproducibilidad y la rendición de cuentas del trabajo científico
+  \citep{wang2026five}.
+  \item Mantener como capacidad basal una experiencia mínima de programación
+  manual, indispensable para leer, probar y auditar lo producido con agentes. La
+  automatización no elimina la fragilidad técnica: los agentes aún pueden producir
+  planes no ejecutables, código incorrecto y trayectorias muy sensibles a la
+  formulación de las instrucciones \citep{wei2025agentic}.
+\end{itemize}
+
+\subsection{Problema, alcance y objetivo del manuscrito}
+
+\begin{itemize}
+  \item Formular el problema curricular: ¿cómo preparar personas y comunidades
+  para colaborar con agentes sin perder comprensión crítica, autonomía,
+  reproducibilidad ni cooperación humana?
+  \item Delimitar el alcance a informática aplicada a investigación, monitoreo y
+  gestión de la biodiversidad, incluyendo datos, software, modelos,
+  infraestructura y prácticas comunitarias.
+  \item Enunciar el objetivo general: proponer un currículo regional que permita
+  reutilizar, comprender, evaluar, mantener y compartir ecosistemas abiertos de
+  conocimiento.
+  \item Presentar las tres preguntas rectoras: qué enseñar, cómo enseñarlo y cómo
+  evaluarlo cuando humanos y agentes producen conocimiento conjuntamente.
+\end{itemize}
+
+\begin{preguntas}
+  \item ¿Qué necesidades del marco de monitoreo del KMGBF deben quedar
+  explícitamente vinculadas al currículo?
+  \item ¿Cuáles son las brechas regionales prioritarias y qué evidencia o casos
+  permiten describirlas?
+  \item ¿Qué queda dentro y fuera del alcance de esta primera versión?
+\end{preguntas}
+
+\noindent\textbf{Resultado esperado de la sección:}
+una tesis compartida sobre la necesidad, propósito, alcance y audiencia del marco
+curricular. \pendiente{2--3 mensajes centrales y referencias de respaldo}
+
+\section{Transformación de la I+D+i y de la gestión de la biodiversidad}
+
+\subsection{Una escala para distinguir grados de autonomía}
+
+No toda aplicación de IA constituye un agente ni transfiere la misma
+responsabilidad. Para ordenar la discusión, se propone adaptar la escala de
+\citet{wei2025agentic}:
+
+\begin{enumerate}
+  \item \textbf{Herramienta experta:} resuelve una tarea acotada; la formulación,
+  ejecución e interpretación permanecen bajo control humano.
+  \item \textbf{Asistente de investigación:} ejecuta autónomamente una etapa o
+  subobjetivo predefinido y devuelve el control a la persona.
+  \item \textbf{Socio científico autónomo:} recorre varias etapas del ciclo,
+  formula hipótesis y adapta su estrategia con intervención humana reducida.
+  \item \textbf{Arquitecto generativo:} inventaría nuevos instrumentos, métodos o
+  marcos conceptuales; es una posibilidad prospectiva, no una capacidad que deba
+  presumirse en sistemas actuales.
+\end{enumerate}
+
+Esta escala debe usarse para decidir qué tareas delegar, qué evidencia exigir y
+qué supervisión corresponde a cada nivel, sin equiparar fluidez lingüística con
+autonomía científica efectiva.
+
+\noindent\textbf{Distinción operacional:} la IA generativa produce artefactos a
+partir de instrucciones, mientras la IA agentiva combina razonamiento iterativo
+---incluidas planificación y reflexión--- con interacción sostenida con
+herramientas o entornos para perseguir objetivos
+\citep{schneider2025generative}. Por tanto, una respuesta elaborada de un modelo
+no basta para clasificarlo como agente.
+
+\subsection{Capacidades emergentes y oportunidades}
+
+\citet{wei2025agentic} sintetizan cinco capacidades que sostienen la agencia
+científica: planificación y razonamiento, integración de herramientas, memoria,
+colaboración entre agentes y optimización mediante retroalimentación. Estas
+capacidades pueden combinarse a lo largo de cuatro procesos: observación y
+formulación de hipótesis; planificación y ejecución; análisis de datos y
+resultados; y síntesis, validación y evolución. De este modo en el campo de la
+informática de la biodiversidad, los agentes pueden ofrecer oportunidades para:
+
+\begin{itemize}
+  \item Generación y revisión asistida de código y documentación.
+  \item Exploración y síntesis de literatura científica.
+  \item Construcción y orquestación de flujos de datos y análisis.
+  \item Acceso en lenguaje natural a repositorios, servicios, APIs y servidores
+  del Model Context Protocol (MCP).
+  \item Apoyo al monitoreo aplicado mediante agentes que ayuden a coordinar
+  adquisición desde sensores, colecciones y ciencia participativa; armonizar
+  taxonomías y metadatos; detectar anomalías; estimar indicadores y su
+  incertidumbre; mantener series temporales; y generar alertas e informes
+  trazables  \citep{paton2009biodiversity,buckland2005monitoring,feng2022databases}.
+  \item Expansión hacia preguntas y campos nuevos. Antes del auge reciente de los
+  LLM, la utilización de IA ya crecía en prácticamente todas las disciplinas y
+  sus beneficios potenciales se distribuían en subcampos muy diversos. Los
+  artículos que mencionaban técnicas de IA mostraban mayor probabilidad de estar
+  entre los más citados, pero esta asociación no demuestra que la IA causara el
+  impacto observado \citep{gao2024quantifying}.
+  \item Ampliación del acceso a análisis especializados. En dominios próximos a
+  la informática de la biodiversidad, agentes bioinformáticos ya traducen
+  consultas en lenguaje natural en flujos de análisis, coordinan equipos de
+  planificador--ejecutor--evaluador y permiten operación local con modelos
+  pequeños y recuperación de información
+  \citep{xin2024bia,xiao2024cellagent,mehandru2025bioagents}. Estos resultados son
+  antecedentes transferibles, no evidencia aún suficiente de desempeño en todos
+  los problemas de biodiversidad.
+\end{itemize}
+
+\subsection{Agentes para el monitoreo aplicado de biodiversidad}
+
+Los agentes pueden apoyar la implementación del Marco de Monitoreo del KMGBF integrando 
+fuentes de datos, calculando y actualizando indicadores mediante flujos reproducibles, 
+evaluando su cobertura y desagregación, identificando vacíos de información y vinculando 
+los resultados con las prioridades nacionales y los ciclos institucionales de decisión. 
+Su aporte no debe reducirse a automatizar reportes, sino facilitar un aprendizaje progresivo 
+que permita mejorar datos, métodos y capacidades sin subordinar las necesidades nacionales 
+a la comparabilidad global \citep{affinito2024monitoring,affinito2025coverage}. Para 
+utilizarlos responsablemente, los especialistas deben saber formular preguntas de gestión 
+verificables, comprender los indicadores y su contexto ecológico e institucional, evaluar 
+la calidad y representatividad de los datos, y auditar el código, los supuestos y los resultados, 
+manteniendo trazabilidad y responsabilidad humana sobre los productos generados.
+
+\subsection{Reorganización emergente del trabajo científico}
+
+La difusión de LLM coincide con cambios en qué investigan las personas, con quién
+colaboran y cómo distribuyen las tareas. En una muestra centrada principalmente en
+biomedicina, los portafolios y las redes de colaboración se volvieron más
+interdisciplinarios después de 2022. En 137.120 artículos con declaraciones CRediT,
+las funciones de software y validación aumentaron, mientras los conjuntos de roles
+individuales se hicieron más estrechos y menos solapados
+\citep{zheng2026scientific}. Estos patrones son coherentes con una organización más
+modular del trabajo y con un mayor peso de la validación.
+
+La interpretación debe ser prudente: el estudio no observa directamente el uso
+privado de LLM, utiliza señales lingüísticas como aproximación, sobrerrepresenta
+publicaciones biomédicas y no identifica un efecto causal. Muestra una
+reorganización contemporánea asociada a la difusión de LLM, no una mejora
+demostrada de la calidad científica \citep{zheng2026scientific}.
+
+\subsection{Riesgos, límites y tensiones}
+
+\begin{itemize}
+  \item Dependencia excesiva de proveedores o agentes y pérdida de autonomía.
+  \item Resultados plausibles pero incorrectos, sesgos, opacidad y dificultades de
+  validación. Distinguir una hipótesis genuinamente novedosa de una interpolación
+  o alucinación requiere auditar su linaje inferencial y contrastarla con
+  conocimiento externo \citep{wei2025agentic}.
+  \item Escasa comprensión de arquitecturas, datos, supuestos y cadenas de
+  dependencia.
+  \item Duplicación de desarrollos, deuda de mantenimiento y pérdida de memoria
+  institucional.
+  \item Trayectorias no deterministas y sensibles al contexto: repetir solo el
+  código no reproduce necesariamente las decisiones, estados, instrucciones ni
+  contingencias que produjeron un resultado agentivo
+  \citep{wei2025agentic,lu2024aiscientist}.
+  \item Errores de parametrización, dependencias rotas, cambios de API y formatos
+  no estandarizados que comprometen flujos compuestos por muchas herramientas
+  \citep{shen2025shortcutsbench,wei2025agentic}.
+  \item Acumulación de errores a lo largo de tareas extensas, razonamientos
+  verbalizados que no necesariamente reflejan el proceso real de decisión, APIs
+  opacas y conductas difíciles de anticipar en entornos dinámicos
+  \citep{schneider2025generative}.
+  \item Ampliación de la superficie de privacidad y seguridad cuando agentes
+  comparten información, invocan herramientas o actúan con permisos y recursos
+  insuficientemente delimitados \citep{schneider2025generative}.
+  \item Costos sociales y ambientales de la automatización.
+  \item Aislamiento de investigadores y debilitamiento de la colaboración,
+  revisión por pares y auditoría colectiva.
+  \item Erosión de pensamiento crítico y destrezas prácticas por dependencia
+  excesiva, junto con el riesgo de saturar la revisión por pares o sesgar la agenda
+  hacia problemas con datos abundantes \citep{wei2025agentic}.
+  \item Distribución desigual de oportunidades. Un análisis agregado por
+  disciplina en Estados Unidos encontró menor uso y beneficio potencial de IA en
+  campos con mayor representación de mujeres y grupos raciales o étnicos
+  subrepresentados. El resultado es correlacional y no debe atribuir capacidades
+  individuales a partir de la composición de una disciplina, pero advierte que la
+  adopción sin políticas inclusivas puede reproducir desigualdades
+  \citep{gao2024quantifying}.
+\end{itemize}
+
+\subsection{Un modelo de colaboración humano--agente}
+
+\begin{itemize}
+  \item Distribuir responsabilidades entre personas, equipos, instituciones y
+  agentes según criticidad, trazabilidad y competencia.
+  \item Desplazar el papel humano desde la ejecución rutinaria hacia la estrategia:
+  definir qué se quiere lograr y por qué, imponer límites éticos y de
+  reproducibilidad, validar con conocimiento del dominio e intervenir ante
+  desviaciones \citep{wei2025agentic,wang2026five}.
+  \item Definir puntos obligatorios de revisión humana, documentación,
+  verificación y rendición de cuentas.
+  \item Diseñar equipos de agentes con roles diferenciados ---planificación,
+  ejecución, uso de herramientas, crítica y evaluación---, preservando diversidad
+  de hipótesis y evitando que el consenso entre agentes sustituya la contrastación
+  empírica \citep{boiko2023autonomous,wei2025agentic}.
+  \item Proponer principios rectores: uso productivo, soberano, reproducible,
+  sostenible, abierto, inclusivo y éticamente responsable.
+  \item Conservar y fortalecer la colaboración interdisciplinaria entre personas.
+  La evidencia anterior al auge de los LLM muestra que los dominios con mayor uso
+  y beneficio potencial de IA tendían a colaborar más con especialistas
+  computacionales; la proporción de estos trabajos colaborativos aumentó con el
+  tiempo \citep{gao2024quantifying}. La formación interna en IA debe complementar,
+  no reemplazar, esta combinación de experticias.
+  \item Ilustrar el modelo con \pendiente{2--4 casos regionales de investigación,
+  monitoreo o gestión}.
+\end{itemize}
+
+\begin{preguntas}
+  \item ¿Qué tareas cambian radicalmente, cuáles solo se aceleran y cuáles deben
+  permanecer bajo responsabilidad humana?
+  \item ¿Qué oportunidades y riesgos son específicos de la región?
+  \item ¿Qué condiciones mínimas permiten confiar en un resultado asistido por IA?
+\end{preguntas}
+
+\noindent\textbf{Resultado esperado de la sección:}
+una tipología de transformaciones, oportunidades, riesgos y salvaguardas que
+justifique las decisiones curriculares posteriores.
+
+\section{Marco de competencias: qué enseñar}
+
+\subsection{Principios para seleccionar y priorizar competencias}
+
+Las competencias deberán ser transferibles entre herramientas, aplicables a
+problemas reales de biodiversidad, observables mediante desempeño y compatibles
+con distintos perfiles y niveles de experiencia. La priorización debe distinguir
+competencias fundamentales, de profundización y especializadas.
+
+El marco de capacidades de la ciencia agentiva sugiere que una formación
+actualizada debe preparar tanto para dirigir el ciclo científico como para
+comprender la arquitectura que lo ejecuta. Por ello, los dominios siguientes
+incorporan explícitamente planificación, herramientas, memoria, colaboración y
+evaluación, sin asumir que todas las personas deban construir agentes desde cero
+\citep{wei2025agentic}.
+
+\subsection{Dominios de competencia propuestos}
+
+\begin{enumerate}
+  \item \textbf{Pensamiento computacional y alfabetización técnica basal:}
+  formular problemas, leer código, comprender errores y realizar programación
+  manual suficiente para auditar.
+  \item \textbf{Sistemas e infraestructura digital:} arquitecturas centralizadas,
+  federadas o sincronizadas; cadenas desde sensores, colecciones y observadores
+  hasta datos, modelos, indicadores y decisiones; entornos, dependencias, APIs,
+  servicios, cómputo y fundamentos de MCP; selección precisa de herramientas,
+  lectura de documentación y gestión de costos y recursos
+  \citep{feng2022databases,westerlaken2024digital}.
+  \item \textbf{Reutilización y mantenimiento:} descubrir, evaluar, adaptar,
+  documentar y sostener repositorios y flujos existentes antes de crear nuevos.
+  \item \textbf{Control de versiones y colaboración abierta:} Git/GitHub,
+  revisión, seguimiento de cambios, documentación y contribución comunitaria.
+  \item \textbf{Reproducibilidad y ciencia abierta:} trazabilidad completa de
+  datos, código, modelos, parámetros, entornos y resultados, extendida a
+  instrucciones, estados del agente, decisiones, justificaciones, versiones de
+  herramientas y contingencias del entorno. En monitoreo, registrar fuente
+  primaria y agregador, protocolo y esfuerzo, taxonomía de referencia,
+  detectabilidad, fecha de consulta, transformaciones, identificadores, licencia y
+  cambios de método \citep{wei2025agentic,feng2022databases,buckland2005monitoring}.
+  \item \textbf{Interacción, planificación y supervisión:} formular objetivos,
+  descomponer tareas, proporcionar contexto rico, definir restricciones, gestionar
+  las herramientas disponibles, supervisar la ejecución y calibrar cuándo confiar
+  o aumentar el escrutinio \citep{wei2025agentic}.
+  \item \textbf{Especificación y control de agentes:} declarar objetivo, rol,
+  restricciones, herramientas permitidas, derechos de delegación, flujo de trabajo
+  y reglas de interacción; ajustar estos elementos al nivel de autonomía e
+  incorporar puntos de consentimiento o aprobación humana
+  \citep{schneider2025generative}.
+  \item \textbf{Memoria y fundamentación en conocimiento:} conectar el agente con
+  literatura, repositorios, ontologías y bases de datos mediante recuperación de
+  información; verificar actualidad, conflicto y procedencia de las fuentes; y
+  gestionar qué conservar, resumir o descartar. La recuperación aumentada
+  fundamenta las respuestas en conocimiento externo, pero no sustituye la
+  evaluación de la evidencia \citep{lewis2020rag,wei2025agentic}.
+  \item \textbf{Validación y auditoría:} diseñar pruebas, contrastar fuentes,
+  revisar código y resultados, estimar incertidumbre, detectar fallas, examinar el
+  linaje de hipótesis presuntamente novedosas y distinguir evidencia de contenido
+  plausible pero no verificado. Para modelos ecológicos, combinar calibración
+  cuantitativa cuando existan datos con validación orientada por múltiples
+  patrones independientes; declarar las dimensiones en que el modelo es válido y
+  evitar que el ajuste a un único resultado o conjunto de datos oculte mecanismos
+  incorrectos \citep{strannegard2026ecosystem}.
+  \item \textbf{Evaluación de herramientas:} comparar desempeño, costo,
+  sostenibilidad, seguridad, privacidad, dependencia y adecuación al propósito;
+  medir éxito y calidad de la tarea, conciencia de falla, precisión de invocación
+  de herramientas y eficiencia computacional; comparar con líneas base
+  pertinentes ---aleatoria, heurística, software establecido o reglas
+  codificadas--- y probar sensibilidad a datos, parámetros, paisajes y semillas
+  aleatorias
+  \citep{schneider2025generative,silvestro2022improving,strannegard2026ecosystem}.
+  \item \textbf{Ética, gobernanza y soberanía:} responsabilidad, sesgos,
+  propiedad intelectual, conocimientos sensibles, impacto ambiental y gobernanza
+  colectiva; participación significativa de comunidades locales e indígenas en la
+  definición y evaluación del monitoreo; reconocimiento de conocimiento no
+  capturado digitalmente y de quién tiene capacidad para intervenir en el diseño
+  tecnológico \citep{westerlaken2024digital}.
+  \item \textbf{Colaboración y aprendizaje permanente:} revisión por pares,
+  comunicación interdisciplinaria, documentación, enseñanza entre pares y
+  participación en comunidades de práctica; orquestación de roles especializados,
+  crítica deliberativa, manejo de desacuerdos y prevención del consenso prematuro
+  entre agentes.
+  \item \textbf{Interdisciplina y división responsable del trabajo:} traducir
+  vocabularios y normas de evidencia entre campos, asignar y rotar funciones,
+  documentar contribuciones humanas y agentivas y evitar que la modularización
+  reduzca la comprensión compartida del proyecto
+  \citep{zheng2026scientific}.
+  \item \textbf{Datos de biodiversidad:} calidad, estándares, metadatos,
+  procedencia, licencias, sesgos, sensibilidad y gestión responsable; integración
+  de ocurrencias, abundancias, rasgos, filogenias, coberturas espaciales,
+  perturbación, clima, costos y regímenes de monitoreo; y evaluación explícita de
+  resolución, error de observación y vacíos de datos. Incluir reconciliación de
+  nombres y conceptos taxonómicos, identificadores persistentes, deduplicación,
+  versiones, transformaciones y estado de sincronización entre la fuente primaria
+  y sus agregadores
+  \citep{silvestro2022improving,strannegard2026ecosystem,feng2022databases}.
+  \item \textbf{Monitoreo de biodiversidad:} convertir una necesidad de gestión en
+  objetivos, variables esenciales, línea base, diseño muestral y frecuencia;
+  considerar variación espacial y detectabilidad; seleccionar indicadores
+  interpretables de riqueza, abundancia, composición y equidad; estimar tendencias,
+  puntos de cambio y precisión; recorrer la cadena observación--variable
+  esencial--indicador--meta--acción; distinguir tipos de indicadores del KMGBF y
+  evaluar su cobertura y desagregación; y asegurar continuidad o calibración
+  cuando cambian los protocolos
+  \citep{paton2009biodiversity,buckland2005monitoring,
+  affinito2024monitoring,affinito2025coverage,jetz2019ebv}.
+  \item \textbf{Modelación ecológica y apoyo a decisiones:} traducir una pregunta
+  en estados, acciones, recompensas, restricciones y escalas; construir ontologías
+  y modelos espaciales, conductuales y dinámicos; diferenciar explicación,
+  predicción y exploración de escenarios; y reconocer cuándo una métrica
+  optimizada es solo una representación parcial de los valores de conservación
+  \citep{silvestro2022improving,strannegard2026ecosystem}. Para variables
+  esenciales de poblaciones, armonizar evidencia heterogénea en espacio y tiempo,
+  ajustar el grano de predicción a la incertidumbre y separar observación,
+  no detección e inferencia modelada \citep{jetz2019ebv}.
+\end{enumerate}
+
+\subsection{Matriz de competencias por perfil y nivel}
+
+\begin{longtable}{@{}p{3.4cm}p{3.5cm}p{3.5cm}p{3.5cm}@{}}
+\toprule
+\textbf{Dominio} & \textbf{Nivel inicial} & \textbf{Nivel intermedio} &
+\textbf{Nivel avanzado}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Dominio} & \textbf{Nivel inicial} & \textbf{Nivel intermedio} &
+\textbf{Nivel avanzado}\\
+\midrule
+\endhead
+Pensamiento computacional &
+Explica y modifica un flujo simple. &
+Diagnostica y prueba componentes. &
+Diseña y audita sistemas complejos.\\
+Sistemas e infraestructura digital &
+Reconoce entornos, dependencias y APIs. &
+Selecciona herramientas y gestiona recursos. &
+Diseña y audita arquitecturas de datos y cómputo.\\
+Reutilización y mantenimiento &
+Reutiliza un flujo o repositorio existente. &
+Adapta y documenta recursos previos. &
+Mantiene y mejora ecosistemas compartidos.\\
+Control de versiones y colaboración abierta &
+Usa Git/GitHub de forma básica. &
+Revisa y contribuye a repositorios. &
+Coordina comunidades y flujos abiertos.\\
+Reproducibilidad y ciencia abierta &
+Ejecuta y documenta un flujo. &
+Registra modelos, instrucciones, herramientas y decisiones. &
+Define estándares y audita trayectorias agentivas.\\
+Interacción, planificación y supervisión &
+Formula tareas simples con ayuda. &
+Planifica flujos y supervisa ejecuciones. &
+Gobierna procesos multietapa y delegación.\\
+Especificación y control de agentes &
+Reconoce objetivo, rol y permisos. &
+Define restricciones y puntos de aprobación. &
+Audita delegación, recursos y conducta emergente.\\
+Memoria y fundamentación en conocimiento &
+Recupera y cita fuentes externas. &
+Configura recuperación y verifica procedencia. &
+Gobierna memorias, ontologías y actualización.\\
+Validación y auditoría &
+Reconoce errores y discrepancias. &
+Diseña pruebas y compara fuentes. &
+Audita linaje, incertidumbre y resultados.\\
+Evaluación de herramientas &
+Compara opciones básicas. &
+Evalúa desempeño, costo y seguridad. &
+Gobierna benchmarking y selección de herramientas.\\
+Ética, gobernanza y soberanía &
+Reconoce riesgos básicos. &
+Evalúa sesgos, privacidad y derechos. &
+Gobierna participación, soberanía y justicia.\\
+Colaboración y aprendizaje permanente &
+Participa en trabajo compartido. &
+Revisa pares y contribuye al aprendizaje. &
+Mantiene comunidades de práctica y formación.\\
+Interdisciplina y división responsable del trabajo &
+Reconoce roles y vocabularios. &
+Coordina equipos interdisciplinarios. &
+Gestiona división de trabajo y comprensión compartida.\\
+Datos de biodiversidad &
+Interpreta datos y metadatos básicos. &
+Evalúa calidad, sesgos y licencias. &
+Gobierna ciclos de vida y estándares de datos.\\
+Monitoreo de biodiversidad &
+Distingue línea base, observación e indicador. &
+Diseña muestreo y enlaza variables esenciales con indicadores. &
+Audita cobertura y gobierna sistemas adaptativos de largo plazo.\\
+Modelación ecológica y apoyo a decisiones &
+Distingue datos, modelo, objetivo y escenario. &
+Formula estados, procesos, escalas y criterios de contraste. &
+Calibra, compara y audita modelos para su uso previsto.\\
+\bottomrule
+\caption{Plantilla inicial de progresión. Debe completarse para todos los
+dominios y adaptarse a los perfiles priorizados.}
+\end{longtable}
+
+\begin{preguntas}
+  \item ¿Qué competencias son comunes a todos los perfiles y cuáles son
+  especializadas?
+  \item ¿Qué nivel mínimo de programación manual es necesario para una auditoría
+  responsable?
+  \item ¿Qué evidencia observable demostraría el dominio de cada competencia?
+\end{preguntas}
+
+\noindent\textbf{Resultado esperado de la sección:}
+un marco consensuado de dominios, resultados de desempeño, niveles de progresión
+y prioridades por perfil.
+
+\section{Modelo pedagógico: cómo enseñar y evaluar}
+
+\subsection{El ciclo científico como organizador}
+
+Las actividades deben recorrer, con autonomía progresiva, las cuatro etapas
+identificadas por \citet{wei2025agentic}: formular una hipótesis fundada; planificar
+y ejecutar; interpretar datos heterogéneos sin confundir señal y ruido; y sintetizar,
+validar y revisar. Enseñar solo la interfaz conversacional dejaría fuera las
+capacidades donde se concentran los principales riesgos científicos.
+
+\subsection{Principios de aprendizaje}
+
+\begin{itemize}
+  \item Aprendizaje basado en problemas auténticos de biodiversidad y productos
+  reutilizables.
+  \item Alternancia entre ejecución manual, asistencia de agentes, comparación y
+  reflexión crítica.
+  \item Autoformación guiada y actualización permanente ante herramientas
+  cambiantes.
+  \item Progresión desde herramientas acotadas y flujos con asistencia humana
+  intensa hacia la supervisión de tareas agentivas más largas; el nivel
+  prospectivo de ``arquitecto generativo'' se analiza críticamente, no se presenta
+  como competencia disponible.
+  \item Trabajo colaborativo, revisión por pares, auditoría colectiva y
+  documentación como parte del aprendizaje.
+  \item Reutilización de repositorios y contribución a bienes comunes digitales.
+  \item Diseño inclusivo, sensible a contextos institucionales y a diferencias de
+  acceso a infraestructura. La evidencia disponible indica que los beneficios de
+  IA pueden distribuirse desigualmente y respalda apoyos formativos y oportunidades
+  dirigidas a grupos históricamente subrepresentados
+  \citep{gao2024quantifying}.
+  \item Aprendizaje interdisciplinario que preserve la cooperación humana: los
+  agentes pueden reducir barreras para explorar otros campos, pero no sustituyen el
+  aprendizaje de sus estándares de evidencia ni la responsabilidad compartida
+  \citep{zheng2026scientific}.
+\end{itemize}
+
+\subsection{Actividades de aprendizaje}
+
+\begin{itemize}
+  \item Reproducir, explicar y mejorar un análisis publicado.
+  \item Auditar código o resultados generados por un agente e identificar fallas.
+  \item Repetir una misma tarea con variaciones equivalentes de instrucciones,
+  versiones o contexto, comparar trayectorias y explicar las divergencias.
+  \item Especificar un agente mediante una ficha de objetivo, rol, restricciones,
+  permisos, herramientas, delegación, presupuesto y puntos de aprobación; ejecutar
+  una prueba y revisar si su conducta se ajustó a la especificación.
+  \item Construir una síntesis de literatura con recuperación aumentada y verificar
+  manualmente la correspondencia entre afirmaciones, citas y fuentes.
+  \item Comparar una tarea manual con una asistida por IA y justificar cuándo usar
+  cada enfoque.
+  \item Adaptar un repositorio existente a un nuevo caso de biodiversidad.
+  \item Auditar la integración de dos bases de biodiversidad: cuantificar
+  solapamiento y registros únicos, reconciliar taxonomías, identificar duplicados,
+  licencias y desfases de actualización, y reconstruir la procedencia hasta las
+  fuentes primarias \citep{feng2022databases}.
+  \item Diseñar un programa de monitoreo asistido por agentes: formular la pregunta
+  de gestión; definir población objetivo, escala, muestreo, detectabilidad,
+  frecuencia e indicadores; asignar tareas humanas y automatizadas; y especificar
+  controles de calidad, incertidumbre, alertas y revisión humana
+  \citep{buckland2005monitoring}.
+  \item Construir un flujo trazable desde observaciones hasta una variable esencial
+  de distribución o abundancia, un indicador del KMGBF y una decisión. Etiquetar
+  cada celda o estimación como observada o modelada, declarar su incertidumbre y
+  justificar el grano espacial, temporal y taxonómico \citep{jetz2019ebv}.
+  \item Realizar un análisis de brechas de una meta del KMGBF: dividirla en
+  elementos, mapear indicadores obligatorios y opcionales, clasificar cobertura
+  completa, parcial, potencial o ausente, y proponer datos, desagregaciones o
+  métodos para cerrar los vacíos \citep{affinito2025coverage}.
+  \item Comparar indicadores sobre una misma serie y construir un caso en que la
+  riqueza o abundancia total mejora mientras desaparecen un hábitat o especies
+  especialistas. Explicar qué oculta cada agregación y qué evidencia adicional
+  requiere una decisión \citep{buckland2005monitoring}.
+  \item Auditar un prototipo de monitoreo automatizado o gemelo digital mediante
+  cuatro preguntas: qué puede capturar, qué infraestructuras conecta, qué entidades
+  y relaciones simula, y quién puede participar o impugnar sus resultados
+  \citep{westerlaken2024digital}.
+  \item Reproducir una versión didáctica de priorización espacial: comparar una
+  política aprendida con selección aleatoria, riqueza de especies y una línea base
+  de optimización; variar presupuesto, frecuencia y error de monitoreo y explicar
+  los compromisos entre métricas \citep{silvestro2022improving}.
+  \item Construir o auditar un modelo ecosistémico basado en agentes y contrastarlo
+  con varios patrones independientes. Documentar supuestos, calibración,
+  generalización a paisajes no usados en el ajuste y estocasticidad; clasificar
+  cualquier ``punto de inflexión'' como resultado del escenario, evidencia
+  empírica o recomendación de manejo \citep{strannegard2026ecosystem}.
+  \item Construir un flujo trazable con datos, pruebas, versiones y documentación.
+  \item Participar en una revisión por pares o contribución a un repositorio
+  abierto.
+  \item Resolver un caso interdisciplinario con roles CRediT rotativos, registrar
+  las contribuciones de personas y agentes y realizar una defensa colectiva para
+  comprobar que la especialización no fragmentó la comprensión del proyecto.
+  \item Evaluar herramientas mediante un benchmark acordado por la comunidad.
+  \item Reproducir un algoritmo desde su publicación y registrar qué información
+  faltante impide una réplica fiel; existen benchmarks específicos para evaluar
+  esta capacidad \citep{xiang2025scireplicate}.
+  \item Resolver un caso en un entorno controlado que evalúe el ciclo completo de
+  descubrimiento, siguiendo el principio de entornos repetibles como
+  \emph{DiscoveryWorld} \citep{jansen2024discoveryworld}.
+\end{itemize}
+
+\subsection{Evaluación en contextos humano--agente}
+
+\begin{itemize}
+  \item Evaluar el proceso y la trazabilidad, no solo el resultado final.
+  \item Solicitar justificación de decisiones, identificación de incertidumbres y
+  registro explícito de la contribución de agentes.
+  \item Combinar demostraciones individuales, productos colectivos, revisión por
+  pares, defensa oral y portafolios reproducibles.
+  \item Usar rúbricas para formulación del problema, reutilización, validez,
+  reproducibilidad, documentación, ética y colaboración.
+  \item Evaluar por separado éxito de la tarea, corrección científica,
+  robustez ante variaciones, calidad de la procedencia, costo, seguridad,
+  calibración de incertidumbre y capacidad de recuperación ante errores.
+  \item En casos ecológicos, exigir adecuación al propósito, comparación con
+  líneas base, plausibilidad de procesos y patrones, calibración local cuando sea
+  posible, desempeño fuera de las condiciones de ajuste y análisis de sensibilidad.
+  \item En monitoreo, evaluar representatividad espacial, detectabilidad, precisión,
+  continuidad temporal, sensibilidad del indicador, procedencia y capacidad de
+  distinguir cambio ecológico de cambios en protocolo o esfuerzo
+  \citep{buckland2005monitoring}; comprobar además que el reporte distingue dato
+  observado, inferencia y ausencia de evidencia, y que no presenta cobertura
+  parcial como medición completa de una meta
+  \citep{jetz2019ebv,affinito2025coverage}.
+  \item Incorporar métricas de conciencia de falla, precisión de uso de
+  herramientas, cumplimiento de permisos y presupuesto y eficacia de los puntos
+  de intervención humana \citep{schneider2025generative}.
+  \item Exigir repeticiones y comparación de trayectorias cuando la
+  estocasticidad o la sensibilidad a instrucciones puedan ocultar fragilidad.
+  \item Diseñar instancias sin asistencia cuando sea necesario comprobar
+  comprensión basal, y con asistencia para evaluar supervisión y auditoría.
+\end{itemize}
+
+\begin{preguntas}
+  \item ¿Qué balance entre práctica manual y asistencia de agentes corresponde a
+  cada nivel?
+  \item ¿Cómo distinguir el desempeño de la persona del desempeño de la
+  herramienta sin simular un entorno de trabajo irreal?
+  \item ¿Qué evidencias y rúbricas permiten evaluar comprensión, juicio y
+  responsabilidad?
+\end{preguntas}
+
+\noindent\textbf{Resultado esperado de la sección:}
+un conjunto de principios pedagógicos, actividades demostrativas y criterios de
+evaluación alineados con el marco de competencias.
+
+\section{Arquitectura curricular: cómo estructurar el programa}
+
+\subsection{Resultados generales de aprendizaje}
+
+Al completar el programa, la persona participante será capaz de:
+
+\begin{enumerate}
+  \item formular problemas computacionales relevantes para biodiversidad;
+  \item descubrir y reutilizar datos, software e infraestructura existentes;
+  \item colaborar eficazmente con personas y agentes, delimitando
+  responsabilidades;
+  \item construir y auditar flujos reproducibles, trazables y mantenibles;
+  \item evaluar críticamente resultados, herramientas, riesgos e impactos; y
+  \item contribuir a comunidades abiertas y a la gobernanza colectiva del
+  conocimiento.
+\end{enumerate}
+
+\subsection{Dos dimensiones de progresión}
+
+La progresión curricular debe cruzar dos dimensiones complementarias:
+
+\begin{itemize}
+  \item \textbf{Autonomía:} herramienta experta, asistente de una etapa y socio
+  que coordina varias etapas. El nivel de arquitecto generativo se reserva como
+  horizonte de análisis y gobernanza.
+  \item \textbf{Ciclo científico:} hipótesis, planificación y ejecución, análisis,
+  y síntesis y validación. Una persona no alcanza un nivel avanzado por usar un
+  sistema más autónomo, sino por demostrar que puede supervisar responsablemente
+  todo el ciclo \citep{wei2025agentic}.
+\end{itemize}
+
+\subsection{Módulos propuestos}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.8cm}p{4.0cm}X p{3.2cm}@{}}
+\toprule
+ & \textbf{Módulo} & \textbf{Foco} & \textbf{Producto demostrable}\\
+\midrule
+1 & Problemas, datos y contexto &
+Formulación, líneas base, diseño de monitoreo, datos espaciales y temporales,
+variables esenciales, indicadores del KMGBF, escalas, estándares, metadatos,
+ética y soberanía. &
+Ficha de problema y plan de datos y monitoreo.\\
+2 & Fundamentos computacionales &
+Código legible, sistemas, entornos, dependencias, pruebas y depuración. &
+Flujo simple explicado y probado.\\
+3 & Repositorios y ciencia abierta &
+Git/GitHub, licencias, documentación, reutilización y colaboración. &
+Contribución versionada a un repositorio.\\
+4 & Agentes y modelos para biodiversidad &
+Objetivos y contexto, planificación, memoria, herramientas, APIs, MCP,
+colaboración multiagente, agentes de decisión y organismos simulados,
+sensores, integración de observaciones, variables esenciales, indicadores,
+especificación, permisos y supervisión. &
+Flujo humano--agente de investigación o monitoreo.\\
+5 & Reproducibilidad y auditoría &
+Procedencia de datos y decisiones, validación, incertidumbre, seguridad,
+repetición, calibración, comparación de escenarios y benchmarking. &
+Auditoría reproducible de un caso.\\
+6 & Proyecto integrador y comunidad &
+Problema real, producto abierto, revisión por pares, mantenimiento y gobernanza. &
+Proyecto defendido y reutilizable.\\
+\bottomrule
+\end{tabularx}
+\caption{Arquitectura modular inicial para discusión.}
+\end{table}
+
+\subsection{Progresión y trayectorias}
+
+\begin{itemize}
+  \item Definir prerrequisitos y un núcleo común para todos los perfiles.
+  \item Ofrecer rutas de profundización para investigación, monitoreo y gestión,
+  docencia, desarrollo e infraestructura.
+  \item Permitir formatos apilables: microcredenciales, curso intensivo, escuela
+  de verano, asignatura semestral y formación en servicio.
+  \item Vincular cada módulo con competencias, actividades, evidencias y criterios
+  de evaluación.
+  \item Incorporar reconocimiento de aprendizajes previos y mecanismos de
+  actualización periódica.
+\end{itemize}
+
+\subsection{Plantilla para especificar cada módulo}
+
+\begin{enumerate}
+  \item Propósito y perfil de entrada.
+  \item Competencias y resultados de aprendizaje observables.
+  \item Conceptos, prácticas y herramientas.
+  \item Caso de biodiversidad y datos requeridos.
+  \item Actividades manuales, asistidas por agentes y colaborativas.
+  \item Evidencias, rúbrica y criterios de aprobación.
+  \item Recursos abiertos, infraestructura y requisitos de acceso.
+  \item Riesgos, resguardos éticos y plan de actualización.
+  \item Especificación de agentes: objetivos, roles, permisos, delegación,
+  presupuesto, puntos de aprobación y criterios para detener la ejecución.
+\end{enumerate}
+
+\begin{preguntas}
+  \item ¿Cuál es el núcleo mínimo viable y qué contenidos son optativos?
+  \item ¿Qué secuencia funciona para públicos con distinta experiencia?
+  \item ¿Qué duración, modalidad y mecanismos de certificación son factibles?
+\end{preguntas}
+
+\noindent\textbf{Resultado esperado de la sección:}
+una arquitectura curricular modular y adaptable, con resultados de aprendizaje,
+progresión, formatos y productos demostrables.
+
+\section{Implementación: infraestructura, gobernanza y comunidad regional}
+
+\subsection{Repositorio abierto de formación}
+
+\begin{itemize}
+  \item Materiales docentes, casos, ejercicios, datos de ejemplo y flujos
+  reproducibles.
+  \item Catálogo de repositorios, APIs, servidores MCP y agentes especializados.
+  \item Plantillas de documentación, evaluación, auditoría y contribución.
+  \item Fichas versionadas de especificación de agentes y sistemas multiagente:
+  objetivo, rol, restricciones, permisos, delegación, comunicación, presupuesto,
+  aprobaciones y condiciones de detención \citep{schneider2025generative}.
+  \item Trazas de referencia que incluyan objetivo, instrucciones, modelos,
+  estados relevantes, decisiones, código, versiones de herramientas, parámetros,
+  datos y condiciones del entorno \citep{wei2025agentic}.
+  \item Versionado, licenciamiento abierto, citación, control de calidad y
+  mantenimiento.
+  \item Acceso mediante interfaces técnicas y, cuando corresponda, lenguaje
+  natural.
+   \item Casos ecológicos con capas espaciales, ocurrencias o abundancias,
+  metadatos de monitoreo, variables de presión y clima, costos, supuestos,
+  parámetros, semillas aleatorias, líneas base y escenarios versionados
+  \citep{silvestro2022improving,strannegard2026ecosystem}.
+  \item Paquetes de monitoreo con pregunta de gestión, línea base, diseño muestral,
+  protocolo y esfuerzo, modelo de observación, indicadores, umbrales de alerta,
+  incertidumbre, versiones y plan de continuidad
+  \citep{paton2009biodiversity,buckland2005monitoring}.
+  \item Casos que documenten toda la cadena desde datos primarios e inferencias de
+  distribución o abundancia hasta indicadores, elementos de metas, reportes y
+  decisiones; incluir matrices de cobertura, desagregaciones y vacíos
+  \citep{jetz2019ebv,affinito2025coverage}.
+\end{itemize}
+
+\subsection{Gobernanza y aseguramiento de calidad}
+
+\begin{itemize}
+  \item Roles de coordinación, mantenimiento, curaduría y revisión.
+  \item Criterios transparentes para incorporar, actualizar, deprecar y archivar
+  recursos.
+  \item Protocolos para privacidad, seguridad, datos sensibles, propiedad
+  intelectual y conflictos de interés.
+  \item Principio de mínimo privilegio para herramientas y datos, límites de
+  recursos y costos, y puntos de aprobación humana proporcionales a la
+  irreversibilidad y al impacto de cada acción.
+  \item Benchmarking comunitario para agentes y herramientas, con casos,
+  métricas, versiones y limitaciones documentadas. Los ensayos deben distinguir
+  nivel de autonomía y etapa del ciclo científico, incluir múltiples ejecuciones y
+  evaluar robustez, costo y recuperación ante fallas, no solo exactitud final
+  \citep{jansen2024discoveryworld,shen2025shortcutsbench}.
+  \item Protocolo para productos de apoyo a decisiones que separe con claridad
+  desempeño computacional, validez ecológica y legitimidad de la decisión; exija
+  calibración y evaluación local antes de transferir modelos, y prohíba presentar
+  umbrales simulados como recomendaciones de manejo sin evidencia independiente
+  \citep{silvestro2022improving,strannegard2026ecosystem}.
+  \item Estándares mínimos de reproducibilidad agentiva para registrar estados,
+  políticas de decisión, justificaciones, instrucciones y contingencias, además
+  de los componentes tradicionales de datos, código y entorno
+  \citep{wei2025agentic}.
+  \item Supervisión proporcional al riesgo mediante límites explícitos de
+  autonomía, verificación previa, auditoría continua, pruebas adversariales y
+  monitoreo posterior al despliegue.
+  \item Revisión participativa del propósito, cobertura y omisiones de sensores,
+  indicadores y gemelos digitales; declaración pública de que son
+  representaciones parciales; y mecanismos para que comunidades locales e
+  indígenas comprendan, cuestionen y coproduzcan el sistema
+  \citep{westerlaken2024digital}.
+  \item Indicadores de adopción, diversidad de participación, reutilización,
+  calidad, sostenibilidad e impacto formativo, desagregados cuando sea apropiado
+  por disciplina, etapa de carrera, género, territorio y condiciones de acceso para
+  detectar brechas en vez de reproducirlas \citep{gao2024quantifying}.
+   \item Sostenibilidad de largo plazo para líneas base, inventarios, taxonomía,
+  digitalización, series temporales y proveedores locales. La integración no debe
+  invisibilizar la curación especializada ni interrumpir la capacidad de generar
+  datos primarios \citep{paton2009biodiversity,feng2022databases}.
+  \item Desarrollo de capacidad nacional para calcular, interpretar y mejorar
+  indicadores, con cooperación regional e internacional cuando los datos, métodos
+  o recursos sean insuficientes. Combinar observación de abajo hacia arriba con
+  productos globales, sin transferir fuera del país la comprensión ni la
+  responsabilidad del monitoreo \citep{affinito2024monitoring,jetz2019ebv}.
+\end{itemize}
+
+\subsection{Comunidad latinoamericana de práctica}
+
+\begin{itemize}
+  \item Articular instituciones, docentes, estudiantes, investigadores,
+  profesionales y desarrolladores.
+  \item Establecer mentorías, encuentros, grupos de trabajo y revisión
+  cruzada entre países.
+  \item Sostener equipos interdisciplinarios y registrar la división del trabajo,
+  vigilando si la asistencia de IA amplía la cooperación o genera aislamiento y
+  especialización sin comprensión compartida \citep{zheng2026scientific}.
+  \item Promover recursos multilingües, transferencia de conocimiento y
+  formación de formadores.
+  \item Definir un modelo sostenible de coordinación, financiamiento e
+  infraestructura compartida.
+  \item Explorar a largo plazo una red interoperable de agentes e instituciones
+  que comparta datos, trazas y revisiones, manteniendo atribución,
+  responsabilidad y seguridad; esta ``cooperación global'' es todavía una visión
+  prospectiva que requiere protocolos y gobernanza nuevos
+  \citep{wei2025agentic}.
+\end{itemize}
+
+\subsection{Hoja de ruta de implementación}
+
+\begin{longtable}{@{}p{2.7cm}p{4.2cm}p{3.4cm}p{3.4cm}@{}}
+\toprule
+\textbf{Horizonte} & \textbf{Hito} & \textbf{Responsables} &
+\textbf{Evidencia de avance}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Horizonte} & \textbf{Hito} & \textbf{Responsables} &
+\textbf{Evidencia de avance}\\
+\midrule
+\endhead
+0--3 meses &
+Editar y publicar el marco curricular y abrir el repositorio. &
+\pendiente{instituciones y equipo editor} &
+Documento versionado; repositorio público.\\
+3--12 meses &
+Pilotear módulos y casos en instituciones participantes. &
+\pendiente{socios y docentes} &
+Cursos piloto; rúbricas; retroalimentación.\\
+12--24 meses &
+Consolidar comunidad, formación de formadores y benchmarking. &
+\pendiente{nodos regionales} &
+Red activa; recursos reutilizados; informe comparativo.\\
+24 meses o más &
+Actualizar, escalar y evaluar el impacto regional. &
+\pendiente{modelo de gobernanza} &
+Nueva versión curricular; indicadores de impacto.\\
+\bottomrule
+\caption{Borrador de hoja de ruta para completar durante el taller.}
+\end{longtable}
+
+\begin{preguntas}
+  \item ¿Qué producto mínimo debe existir al terminar el taller y quién lo
+  mantendrá?
+  \item ¿Qué arquitectura técnica y reglas de gobernanza son realistas?
+  \item ¿Cómo se sostendrán la comunidad, la actualización y el aseguramiento de
+  calidad?
+\end{preguntas}
+
+\noindent\textbf{Resultado esperado de la sección:}
+un diseño de repositorio y comunidad, un modelo de gobernanza, indicadores y una
+hoja de ruta con responsables.
+
+\section{Conclusiones y recomendaciones}
+
+\subsection{Mensajes principales}
+
+\begin{enumerate}
+  \item La automatización no elimina la necesidad de fundamentos; cambia cuáles
+  deben dominarse y cómo se aplican.
+  \item El objetivo formativo no es producir más código, sino construir
+  comunidades capaces de comprender, reutilizar, auditar y gobernar ecosistemas
+  abiertos de conocimiento.
+  \item La reproducibilidad, la validación y la colaboración humana son
+  capacidades centrales, no complementos; en sistemas agentivos deben abarcar la
+  trayectoria de decisiones, no únicamente el código final
+  \citep{wei2025agentic}.
+  \item El currículo debe ser modular, actualizable y evaluado mediante desempeño
+  auténtico en contextos humano--agente.
+  \item La implementación exige infraestructura compartida, gobernanza y una
+  comunidad regional sostenible.
+  \item Los agentes deben fortalecer tanto la investigación como el monitoreo
+  aplicado: automatizar tareas dentro de sistemas observacionales bien diseñados,
+  sostenidos en el tiempo y vinculados con decisiones, sin sustituir el criterio
+  ecológico, la capacidad local ni la participación pública.
+\end{enumerate}
+
+\subsection{Recomendaciones por actor}
+
+\begin{itemize}
+  \item \textbf{Instituciones de formación:} \pendiente{3--5 recomendaciones
+  priorizadas}.
+  \item \textbf{Instituciones científicas y de gestión:}
+  \pendiente{3--5 recomendaciones priorizadas}.
+  \item \textbf{Financiadores y organismos de política pública:}
+  \pendiente{3--5 recomendaciones priorizadas}.
+  \item \textbf{Comunidades técnicas y científicas:}
+  \pendiente{3--5 recomendaciones priorizadas}.
+\end{itemize}
+
+\subsection{Compromisos y próximos pasos}
+
+\begin{itemize}
+  \item Acordar equipo editor, proceso de revisión y fecha de publicación.
+  \item Definir licencia, repositorio, canales de participación y versión inicial.
+  \item Seleccionar pilotos, instituciones anfitrionas y mecanismos de evaluación.
+  \item Establecer una fecha de revisión del marco y criterios para futuras
+  versiones.
+\end{itemize}
+
+\noindent\textbf{Cierre esperado:}
+una síntesis breve que conecte el fortalecimiento regional de capacidades con la
+implementación del KMGBF y convoque a una construcción colectiva, abierta y
+responsable.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+
+\section{Lista de productos que deben completarse durante el taller}
+
+\begin{enumerate}
+  \item Tesis, alcance, audiencia y mensajes centrales del manuscrito.
+  \item Tipología de cambios, oportunidades, riesgos y salvaguardas.
+  \item Matriz de competencias por perfil y nivel.
+  \item Principios pedagógicos, actividades demostrativas y rúbricas.
+  \item Mapa de módulos, resultados de aprendizaje y trayectorias.
+  \item Especificación mínima del repositorio abierto.
+  \item Modelo de gobernanza, indicadores y hoja de ruta.
+  \item Recomendaciones por actor, compromisos y responsables.
+\end{enumerate}
+
+\section{Ficha de acuerdo para cada bloque}
+
+\begin{description}[style=nextline,leftmargin=3.2cm,labelwidth=3cm]
+  \item[Pregunta central] \pendiente{pregunta discutida}
+  \item[Acuerdos] \pendiente{3--7 afirmaciones concretas}
+  \item[Disensos o incertidumbres] \pendiente{puntos que requieren más evidencia
+  o decisión}
+  \item[Ejemplos y evidencia] \pendiente{casos, literatura, repositorios o datos}
+  \item[Recomendaciones] \pendiente{acciones, destinatarios y plazo}
+  \item[Texto para integrar] \pendiente{2--4 párrafos redactados}
+  \item[Responsables de edición] \pendiente{nombres y fecha de entrega}
+\end{description}
+
+\section*{Documentos de base}
+\addcontentsline{toc}{section}{Documentos de base}
+
+\begin{itemize}
+  \item \emph{Programa Taller Currículo IA Biodiversidad, septiembre de 2026},
+  versión 3.
+  \item \emph{Taller Internacional: Diseño de un Currículo de Nuevas
+  Competencias en Informática de la Biodiversidad para la Era de los Agentes de
+  Inteligencia Artificial}.
+\end{itemize}
+
+\end{document}
